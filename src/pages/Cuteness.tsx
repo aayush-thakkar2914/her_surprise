@@ -11,6 +11,49 @@ const cuteMessages = [
   "Your cuteness is simply irresistible",
 ];
 
+const cuteMedia = [
+  {
+    type: "image",
+    src: "/cuteness/cute1.jpg",
+    alt: "Cute moment 1",
+  },
+  {
+    type: "video",
+    src: "/cuteness/cute3.mp4",
+    alt: "Cute moment 2",
+  },
+  {
+    type: "image",
+    src: "/cuteness/cute2.jpg",
+    alt: "Cute moment 3",
+  },
+  {
+    type: "image",
+    src: "/cuteness/cute4.jpg",
+    alt: "Cute moment 4",
+  },
+  {
+    type: "video",
+    src: "/cuteness/cute7.mp4",
+    alt: "Cute moment 5",
+  },
+  {
+    type: "image",
+    src: "/cuteness/cute5.jpg",
+    alt: "Cute moment 6",
+  },
+  {
+    type: "image",
+    src: "/cuteness/cute6.jpg",
+    alt: "Cute moment 7",
+  },
+  {
+    type: "image",
+    src: "/cuteness/cute8.jpg",
+    alt: "Cute moment 8",
+  },
+];
+
 const Cuteness = () => {
   return (
     <div className="min-h-screen pt-32 pb-20 px-4 gradient-dreamy">
@@ -99,22 +142,39 @@ const Cuteness = () => {
                 Your Cute Moments
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {[...Array(8)].map((_, i) => (
+                {cuteMedia.map((item, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: i * 0.1 }}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="aspect-square bg-gradient-romance rounded-2xl flex items-center justify-center cursor-pointer shadow-soft hover:shadow-glow transition-smooth"
+                    whileHover={{ scale: 1.05 }}
+                    className="aspect-square rounded-2xl overflow-hidden cursor-pointer shadow-soft hover:shadow-glow transition-smooth relative group"
                   >
-                    <Sparkles className="text-white" size={32} />
+                    {item.type === "image" ? (
+                      <img
+                        src={item.src}
+                        alt={item.alt || `Cute moment ${i + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <video
+                        src={item.src}
+                        className="w-full h-full object-cover"
+                        loop
+                        muted
+                        playsInline
+                        onMouseEnter={(e) => e.currentTarget.play()}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.pause();
+                          e.currentTarget.currentTime = 0;
+                        }}
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
                   </motion.div>
                 ))}
               </div>
-              <p className="text-center text-muted-foreground font-poppins mt-6 italic">
-                [Add your favorite cute photos here]
-              </p>
             </CardContent>
           </Card>
         </motion.div>

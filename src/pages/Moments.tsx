@@ -8,22 +8,22 @@ const Moments = () => {
     {
       title: "Photos Together",
       icon: Camera,
-      description: "Captured memories of our beautiful moments",
-      count: 24,
+      description: "The most precious memories of my life",
+      count: "Click me for more",
       link: "/photos-gallery",
     },
     {
       title: "Virtual Dates",
       icon: Video,
-      description: "Distance couldn't keep us apart",
-      count: 12,
+      description: "Every Video Call I Have With You Is A Virtual Date For Me",
+      count: "Click me for more",
       link: "/virtual-dates-gallery",
     },
     {
       title: "Birthday Celebration",
       icon: Cake,
-      description: "Making every celebration special",
-      count: 8,
+      description: "Every celebration I had with you is so special merii bachaaa as you the most special part of my life",
+      count: "Click me for more",
       link: "/birthday-gallery",
     },
   ];
@@ -100,19 +100,30 @@ const Moments = () => {
                 Gallery Preview
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {[...Array(8)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{ scale: 1.05 }}
-                    className="aspect-square bg-muted rounded-lg flex items-center justify-center cursor-pointer shadow-soft hover:shadow-romantic transition-smooth"
-                  >
-                    <Camera className="text-muted-foreground" size={32} />
-                  </motion.div>
-                ))}
+                {[
+                "/moments/photo1.jpg",
+                "/moments/photo2.jpg",
+                "/moments/photo3.jpg",
+                "/moments/photo4.jpg",
+                "/moments/photo5.jpg",
+                "/moments/photo6.jpg",
+                "/moments/photo7.jpg",
+                "/moments/photo9.jpg",
+              ].map((src, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ scale: 1.05 }}
+                  className="aspect-square rounded-lg overflow-hidden shadow-soft hover:shadow-romantic transition-smooth"
+                >
+                  <img
+                    src={src}
+                    alt={`memory-${i + 1}`}
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                  />
+                </motion.div>
+              ))}
+
               </div>
-              <p className="text-center text-muted-foreground font-poppins mt-6 italic">
-                [Add your photos here to create a beautiful gallery]
-              </p>
             </CardContent>
           </Card>
         </motion.div>
