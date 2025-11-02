@@ -18,7 +18,7 @@ So from the day we met to today when the day you are reading this for the first 
 
 Loveee you dher sara merii bacha merii lioness 🫂❤️💖🥹
 Your loving and only tumhara one and only
-BOBO ❤️❤️❤️ 
+BOBO ❤️❤️❤️❤️
 `;
 
 const Letter = () => {
